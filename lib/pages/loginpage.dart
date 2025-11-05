@@ -99,13 +99,13 @@ class _LoginpageState extends State<Loginpage> {
                   ElevatedButton(onPressed: () {
                     Navigator.pushNamed(context, '/home');
                   }, child: Text("Login")),
-                  SizedBox(width: 20),
-                  ElevatedButton(onPressed: () {
-                    Navigator.pushNamed(context, '/register');
-                  }, child: Text("Register")),
                 ],
               ),
-              SizedBox(height: 20),
+              SizedBox(height: 20,),
+              TextButton(onPressed: () {
+                Navigator.pushNamed(context, '/register');
+              }, child: Text("Doesn't have account?")),
+              SizedBox(height: 1),
               TextButton(onPressed: () {}, child: Text("Forgot Password?")),
             ],
           ),
