@@ -15,7 +15,7 @@ class _RegisterpageState extends State<Registerpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFF4E0),
+      backgroundColor: Color.fromARGB(255, 37, 37, 37),
       body: Center(
         child: Container(
           width: 400,
@@ -23,7 +23,10 @@ class _RegisterpageState extends State<Registerpage> {
           padding: EdgeInsets.all(30),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFFFFB84C), Color(0xFFFFDE6B)],
+              colors: [
+                Color.fromARGB(255, 135, 0, 5),
+                Color.fromARGB(255, 77, 0, 5),
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -35,7 +38,7 @@ class _RegisterpageState extends State<Registerpage> {
             ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.3),
+                color: Colors.black.withValues(alpha: 0.7),
                 blurRadius: 50,
                 offset: Offset(0, 10),
               ),
@@ -44,14 +47,14 @@ class _RegisterpageState extends State<Registerpage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.app_registration),
+              Icon(Icons.app_registration, color: Colors.white),
               SizedBox(height: 10),
               Text(
                 "Register",
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: Colors.white,
                   letterSpacing: 1.2,
                 ),
               ),
@@ -122,7 +125,10 @@ class _RegisterpageState extends State<Registerpage> {
                 onPressed: () {
                   Navigator.pushNamed(context, '/');
                 },
-                child: Text("Already have account?"),
+                child: Text(
+                  "Already have account?",
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

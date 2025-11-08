@@ -1,3 +1,5 @@
+import 'package:capstone_layout/pages/homepage.dart';
+import 'package:capstone_layout/pages/registerpage.dart';
 import 'package:flutter/material.dart';
 
 class Loginpage extends StatefulWidget {
@@ -96,7 +98,11 @@ class _LoginpageState extends State<Loginpage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, '/home');
+                      Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(builder: (context) => Homepage()),
+                        (Route<dynamic> route) => false,
+                      );
                     },
                     child: Text("Login"),
                   ),
@@ -105,7 +111,11 @@ class _LoginpageState extends State<Loginpage> {
               SizedBox(height: 20),
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/register');
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => Registerpage()),
+                    (Route<dynamic> route) => false,
+                  );
                 },
                 child: Text(
                   "Doesn't have account?",

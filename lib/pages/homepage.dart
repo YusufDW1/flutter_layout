@@ -1,3 +1,4 @@
+import 'package:capstone_layout/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
@@ -14,17 +15,109 @@ class Homepage extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: Icon(Icons.menu, color: Colors.white),
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+            },
+          ),
+        ),
+        actions: [
+          Builder(
+            builder: (context) => Padding(
+              padding: EdgeInsets.only(right: 0.8),
+              child: CircleAvatar(
+                backgroundColor: Colors.white,
+                child: IconButton(
+                  icon: Icon(
+                    Icons.account_circle,
+                    color: Color.fromARGB(255, 135, 0, 5),
+                  ),
+                  onPressed: () {
+                    Scaffold.of(context).openEndDrawer();
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        backgroundColor: Color.fromARGB(255, 37, 37, 37),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Color.fromARGB(255, 135, 0, 5)),
+              child: Center(
+                child: Text(
+                  "Riwayat",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  ListTile(
+                    leading: Icon(Icons.chat, color: Colors.white),
+                    title: Text(
+                      "Riwayat 1",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      endDrawer: Drawer(
+        backgroundColor: Color.fromARGB(255, 37, 37, 37),
+        child: Column(
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(color: Color.fromARGB(255, 135, 0, 5)),
+              child: Center(
+                child: Text(
+                  "Akun",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.logout, color: Colors.white),
+              title: Text("Logout", style: TextStyle(color: Colors.white)),
+              onTap: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => Loginpage()),
+                  (Route<dynamic> route) => false,
+                );
+              },
+            ),
+          ],
+        ),
       ),
       body: Column(
         children: [
           Expanded(
             child: Center(
               child: Text(
-                "Tulis topik belajar kamu di bawah ya!",
+                "Mau belajar apa hari ini?",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
-                  color: Colors.orange[800],
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -32,7 +125,7 @@ class Homepage extends StatelessWidget {
           ),
           Container(
             padding: EdgeInsets.all(10),
-            color: Color(0xFFFFE7B3),
+            color: Color.fromARGB(255, 135, 0, 5),
             child: Row(
               children: [
                 Expanded(
@@ -53,10 +146,13 @@ class Homepage extends StatelessWidget {
                 ),
                 SizedBox(width: 5),
                 CircleAvatar(
-                  backgroundColor: Color(0xFFFFB84C),
+                  backgroundColor: Colors.white,
                   child: IconButton(
                     onPressed: () {},
-                    icon: Icon(Icons.send, color: Colors.white),
+                    icon: Icon(
+                      Icons.send,
+                      color: Color.fromARGB(255, 135, 0, 5),
+                    ),
                   ),
                 ),
               ],
