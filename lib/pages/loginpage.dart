@@ -15,7 +15,7 @@ class _LoginpageState extends State<Loginpage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFF4E0),
+      backgroundColor: Color.fromARGB(255, 37, 37, 37),
       body: Center(
         child: Container(
           width: 400,
@@ -23,19 +23,17 @@ class _LoginpageState extends State<Loginpage> {
           padding: EdgeInsets.all(30),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFFFFB84C), Color(0xFFFFDE6B)],
+              colors: [
+                Color.fromARGB(255, 135, 0, 5),
+                Color.fromARGB(255, 77, 0, 5),
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
             borderRadius: BorderRadius.circular(30),
-            border: Border.all(
-              color: Colors.black,
-              width: 1.0,
-              style: BorderStyle.solid,
-            ),
             boxShadow: [
               BoxShadow(
-                color: Colors.black.withValues(alpha: 0.3),
+                color: Colors.black.withValues(alpha: 0.7),
                 blurRadius: 50,
                 offset: Offset(0, 10),
               ),
@@ -44,14 +42,14 @@ class _LoginpageState extends State<Loginpage> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(Icons.login),
+              Icon(Icons.login_rounded, color: Colors.white),
               SizedBox(height: 10),
               Text(
                 "Login",
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: const Color.fromARGB(255, 250, 250, 250),
                   letterSpacing: 1.2,
                 ),
               ),
@@ -96,17 +94,32 @@ class _LoginpageState extends State<Loginpage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(onPressed: () {
-                    Navigator.pushNamed(context, '/home');
-                  }, child: Text("Login")),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/home');
+                    },
+                    child: Text("Login"),
+                  ),
                 ],
               ),
-              SizedBox(height: 20,),
-              TextButton(onPressed: () {
-                Navigator.pushNamed(context, '/register');
-              }, child: Text("Doesn't have account?")),
+              SizedBox(height: 20),
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/register');
+                },
+                child: Text(
+                  "Doesn't have account?",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
               SizedBox(height: 1),
-              TextButton(onPressed: () {}, child: Text("Forgot Password?")),
+              TextButton(
+                onPressed: () {},
+                child: Text(
+                  "Forgot Password?",
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
             ],
           ),
         ),

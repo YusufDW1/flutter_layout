@@ -6,12 +6,12 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFF4E0),
+      backgroundColor: Color.fromARGB(255, 37, 37, 37),
       appBar: AppBar(
-        backgroundColor: Color(0xFFFFB84C),
+        backgroundColor: Color.fromARGB(255, 135, 0, 5),
         title: Text(
           "Amba Learn",
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
       ),
