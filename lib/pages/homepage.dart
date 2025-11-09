@@ -1,4 +1,3 @@
-import 'package:capstone_layout/pages/loginpage.dart';
 import 'package:flutter/material.dart';
 
 class Homepage extends StatelessWidget {
@@ -6,166 +5,133 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Example username (replace with actual user data later)
+    const String username = "John Doe";
+
+    // Example chat history items
+    final List<String> chatHistory = [
+      "Math Basics",
+      "Physics Notes",
+      "AI Discussion",
+      "Flutter Help",
+    ];
+
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 37, 37, 37),
+      backgroundColor: const Color.fromARGB(255, 37, 37, 37),
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 77, 0, 5),
-        title: Text(
+        backgroundColor: const Color.fromARGB(255, 77, 0, 5),
+        title: const Text(
           "AmbaLearn",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
         centerTitle: true,
         leading: Builder(
           builder: (context) => IconButton(
-            icon: Icon(Icons.menu, color: Colors.white),
+            icon: const Icon(Icons.menu, color: Colors.white),
             onPressed: () {
               Scaffold.of(context).openDrawer();
             },
           ),
         ),
-        actions: [
-          Builder(
-            builder: (context) => Padding(
-              padding: EdgeInsets.only(right: 0.8),
-              child: CircleAvatar(
-                backgroundColor: Colors.white,
-                child: IconButton(
-                  icon: Icon(
-                    Icons.account_circle,
-                    color: Color.fromARGB(255, 77, 0, 5),
-                  ),
-                  onPressed: () {
-                    Scaffold.of(context).openEndDrawer();
-                  },
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
-      drawer: Drawer(
-        backgroundColor: Color.fromARGB(255, 37, 37, 37),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Color.fromARGB(255, 77, 0, 5)),
-              child: Center(
-                child: Text(
-                  "Riwayat",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              child: ListView(
-                children: [
-                  ListTile(
-                    leading: Icon(Icons.chat, color: Colors.white),
-                    title: Text(
-                      "Riwayat 1",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
-      endDrawer: Drawer(
-        backgroundColor: Color.fromARGB(255, 37, 37, 37),
-        child: Column(
-          children: [
-            DrawerHeader(
-              decoration: BoxDecoration(color: Color.fromARGB(255, 77, 0, 5)),
-              child: Center(
-                child: Text(
-                  "Akun",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            ListTile(
-              leading: Icon(Icons.account_circle_outlined, color: Colors.white),
-              title: Text(
-                "Switch Account",
-                style: TextStyle(color: Colors.white),
-              ),
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    // Contoh data list
-                    List<String> items = [
-                      "Item 1",
-                      "Item 2",
-                      "Item 3",
-                      "Item 4",
-                      "Item 5",
-                      "Item 6",
-                    ];
 
-                    return AlertDialog(
-                      backgroundColor: Colors.white,
-                      title: Text("Pilih Akun"),
-                      content: Container(
-                        // Tentukan tinggi agar ListView terbatas
-                        height: 200,
-                        width: double.maxFinite,
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: items.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              title: Text(items[index]),
-                              onTap: () {
-                                // Aksi saat item diklik
-                                print("Dipilih: ${items[index]}");
-                                Navigator.of(context).pop(); // Tutup dialog
-                              },
-                            );
-                          },
-                        ),
-                      ),
-                      actions: [
-                        TextButton(
-                          child: Text("Batal"),
-                          onPressed: () {
-                            Navigator.of(context).pop(); // Tutup dialog
-                          },
-                        ),
-                      ],
-                    );
-                  },
-                );
+      // LEFT DRAWER
+      drawer: Drawer(
+        backgroundColor: const Color.fromARGB(255, 37, 37, 37),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Color.fromARGB(255, 77, 0, 5)),
+              child: Center(
+                child: Text(
+                  "AmbaLearn Menu",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+
+            // MENU ITEMS
+            ListTile(
+              leading: const Icon(Icons.add, color: Colors.white),
+              title: const Text("New Chat", style: TextStyle(color: Colors.white)),
+              onTap: () {
+                // TODO: Handle new chat
               },
             ),
             ListTile(
-              leading: Icon(Icons.logout, color: Colors.white),
-              title: Text("Logout", style: TextStyle(color: Colors.white)),
+              leading: const Icon(Icons.school, color: Colors.white),
+              title: const Text("Courses", style: TextStyle(color: Colors.white)),
               onTap: () {
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => Loginpage()),
-                  (Route<dynamic> route) => false,
-                );
+                Navigator.pushNamed(context, '/courses');
               },
             ),
+            const Padding(
+              padding: EdgeInsets.only(left: 16, top: 10, bottom: 5),
+              child: Text(
+                "Chats",
+                style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold),
+              ),
+            ),
+
+            // CHAT HISTORY
+            Expanded(
+              child: ListView.builder(
+                itemCount: chatHistory.length,
+                itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: const Icon(Icons.chat_bubble_outline, color: Colors.white),
+                    title: Text(
+                      chatHistory[index],
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    onTap: () {
+                      // TODO: Open chat
+                    },
+                  );
+                },
+              ),
+            ),
+
+            // ACCOUNT SECTION AT THE BOTTOM
+            const Divider(color: Colors.white24),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushNamed(context, '/user_settings');
+                },
+                borderRadius: BorderRadius.circular(8),
+                child: Row(
+                  children: [
+                    const CircleAvatar(
+                      radius: 20,
+                      backgroundImage: NetworkImage("https://placehold.co/600x400.png?text=JD"), // Replace with real image
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child: Text(
+                        username,
+                        style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    const Icon(Icons.arrow_forward_ios, color: Colors.white70, size: 16),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
           ],
         ),
       ),
+
       body: Column(
         children: [
-          Expanded(
+          const Expanded(
             child: Center(
               child: Text(
                 "Mau belajar apa hari ini?",
@@ -179,8 +145,8 @@ class Homepage extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.all(10),
-            color: Color.fromARGB(255, 77, 0, 5),
+            padding: const EdgeInsets.all(10),
+            color: const Color.fromARGB(255, 77, 0, 5),
             child: Row(
               children: [
                 Expanded(
@@ -189,7 +155,7 @@ class Homepage extends StatelessWidget {
                       hintText: "Tulis disini",
                       filled: true,
                       fillColor: Colors.white,
-                      contentPadding: EdgeInsets.symmetric(
+                      contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 12,
                       ),
@@ -199,12 +165,12 @@ class Homepage extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(width: 5),
+                const SizedBox(width: 5),
                 CircleAvatar(
                   backgroundColor: Colors.white,
                   child: IconButton(
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.send,
                       color: Color.fromARGB(255, 135, 0, 5),
                     ),
